@@ -20,7 +20,7 @@ public class Clicker : MonoBehaviour
          
         */
 
-        int count;
+        [SerializeField] int count;
         
     }
 }
