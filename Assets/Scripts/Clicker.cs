@@ -1,26 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Clicker : MonoBehaviour
+public class Clicker : MonoBehaviour, IPointerClickHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int productivity = 1;
+    [SerializeField] private int price = 20;
+
+    private int count = 0;
+    private int profit => productivity;
+
+    public void TakeMoney(int profit)
     {
-        
+        count += profit;
+        Debug.Log("Р’РѕР·СЊРјРё РїРµС‡РµРЅСЊРєРё!");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        /*
-        нажатие ЛКМ
-        добавление денег на счет
-        покупка завода клавишей B (увеличивает в 2 раза заработок)
-         
-        */
-
-        [SerializeField] int count;
-        
+        TakeMoney(profit);
+        Debug.Log(count);
     }
+    /*   public static void BuyFactory(int price, int productivity)
+       {
+           count -= price;
+           profit += productivity;
+           Debug.Log("РљСѓРїРёР» Р·Р°РІРѕРґ!");
+       }
+    */
 }
